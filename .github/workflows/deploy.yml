@@ -1,0 +1,35 @@
+name: 部署github pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+      - name: 安装依赖和打包
+        run: |
+          pnpm install
+          pnpm build
+      
+      - name: 部署
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          BRANCH: gh-pages
+          FOLDER: dist
+
+      - name: 产物
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
