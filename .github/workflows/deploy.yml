@@ -32,8 +32,3 @@ jobs:
           BRANCH: gh-pages
           FOLDER: dist
           clean: true
-
-      - name: 产物
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
