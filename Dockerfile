@@ -1,11 +1,8 @@
 # 构建阶段
-FROM node:20-alpine as build-stage
+FROM gplane/pnpm as build-stage
 
 # 设置工作目录
 WORKDIR /app
-
-# 安装pnpm
-RUN npm install -g pnpm
 
 # 复制package.json和pnpm-lock.yaml (如果存在)
 COPY package.json pnpm-lock.yaml* ./
