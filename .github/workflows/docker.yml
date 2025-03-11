@@ -37,4 +37,4 @@ jobs:
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vue-app:latest
+          tags: ${{ secrets.ALI_REGISTRY }}/byzm/vue-app:latest
